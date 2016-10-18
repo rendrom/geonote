@@ -1,0 +1,16 @@
+<div ng-class="{'has-error': entryFieldForm[field].$invalid }">
+    <div>
+        <ng-form name="entryFieldForm" class="entry-form">
+            <input ng-init="entryAddr[field] = entry[field]"
+                   class="form-control attr-input"
+                   type="text" name="{$field$}" ng-model="entryAddr[field]" autocomplete="off"
+                   typeahead="address for address in addressAutocomplate($viewValue, field, panel)"
+                   typeahead-input-formatter="formatAddr($model, field)"
+                   typeahead-on-select="onAddressSelect($item, $model, $label, field, panel)"
+                   typeahead-template-url="{$ getTypeheadTemplate(field) $}"
+                   typeahead-min-length="{$ getTypeheadMinLength(field) $}"
+                   typeahead-wait-ms="600">
+        </ng-form>
+    </div>
+</div>
+

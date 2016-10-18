@@ -1,0 +1,26 @@
+<div class="panel panel-default" id="features">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            <div class="row">
+                <div ng-class="{'col-xs-6': !is_narrow, 'col-xs-7': is_narrow}">
+                    <span>Список</span>
+                </div>
+                <div ng-class="{'col-xs-4': !is_narrow, 'col-xs-3': is_narrow}" ng-cloak>
+                    <div ng-if="entries && Entries.baseEntryCount != Entries.queryEntryCount">
+                      <small><span ng-hide="is_narrow">Выбрано:</span>{$ Entries.queryEntryCount $}
+                      <i class="fa fa-ban action-ico" ng-click="cleanSelection()" title="Сбросить выборку"></i></small>
+                    </div>
+                </div>
+                <div class="col-xs-2"><a href="" ng-click="hideSidebar()"><i class="fa fa-times action-ico pull-right"></i></a>
+                </div>
+            </div>
+        </h3>
+    </div>
+    <div class="sidebar-body" endless-scroll="showMore()">
+
+            <div entries-list></div>
+
+    </div>
+</div>
+
+

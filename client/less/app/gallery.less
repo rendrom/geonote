@@ -1,0 +1,47 @@
+.gallery-widget {
+  display: block;
+  position: relative;
+  clear: both;
+
+  img {
+    max-width: 100% !important;
+  }
+
+  &.dragover {
+    background: #d3d3d3;
+  }
+
+  .delete-image-btn {
+    color: @trash-color;
+    padding: 5px;
+  }
+
+  .app-photos {
+    width: 90%;
+    margin: 5px auto;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #d3d3d3;
+    }
+  }
+
+  .bgimage {
+    text-align: right;
+    color: white;
+    background-size: cover;
+    height: 100%;
+    background-position: center center;
+  }
+
+  ul[rn-carousel] {
+    width: 100%;
+    height: 200px;
+    margin: 0 auto;
+  }
+
+}
+

@@ -1,0 +1,19 @@
+<div class="feature-list">
+    <table class="table table-hover">
+        <tbody>
+            <tr ng-if="(auth.user && auth.user===Entries.dynamit.user)">
+                <td class="create-entry-cell" ng-click="goToCreatePage()" title="{$ NAMES.entry.create $}">
+                    <span><i class="glyphicon glyphicon-plus create-ico" ></i></span>
+                </td>
+            </tr>
+            <tr ng-repeat="e in entries" class="animate" ng-class="{'animate-item':!appConf.previousEntry}" id="entry-{$e.id$}">
+                <td entry-in-list data-entry="e"></td>
+            </tr>
+        </tbody>
+    </table>
+    <div ng-if="nextPage" ng-click="showMore()" class="box-content">
+        <button class="btn btn-default center-block show-more-btn" data-loading-text="Загрузка...">
+            Загрузить ещё
+        </button>
+    </div>
+</div>

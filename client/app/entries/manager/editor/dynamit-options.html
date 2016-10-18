@@ -1,0 +1,44 @@
+<form name="optionsForm">
+    <fieldset>
+
+        <!-- Options -->
+        <div class="form-group multi-cbx">
+            <label class="control-label" for="options">Опции</label>
+
+            <div class="form-group">
+                <label class="checkbox-inline" for="can_comment">
+                    <input type="checkbox" name="can_comment" id="can_comment"
+                           ng-model="dynamit.can_comment" value="{$ meta.actions['can_comment'].label $}">
+                    {$ meta.actions['can_comment'].label $}
+                </label>
+                <label class="checkbox-inline" for="photo_gallery">
+                    <input type="checkbox" name="photo_gallery" id="photo_gallery"
+                           ng-model="dynamit.photo_gallery" value="{$ meta.actions['photo_gallery'].label $}">
+                    {$ meta.actions['photo_gallery'].label $}
+                </label>
+            </div>
+        </div>
+
+        <!-- Entry name select -->
+        <div class="row">
+            <div class="form-group col-lg-5">
+                <label class="control-label" for="description">{$ meta.actions['entryname'].label $}</label>
+
+                <div class="controls">
+                    <select name="entryname" ng-model="dynamit.entryname"
+                            class="form-control input-block-level input-sm">
+                        <option value="id" ng-selected="dynamit.entryname === 'id'">ID</option>
+                        <option ng-repeat="f in dynamit.fields" ng-show="f.name && f.verbose_name"
+
+                                value="{$f.name$}" ng-selected="f.name === dynamit.entryname">{$ f.verbose_name $}
+                        </option>
+                    </select>
+
+                    <p ng-if="meta.actions['entryname'].help_text"
+                       class="help-block">{$ meta.actions['entryname'].help_text $}</p>
+                </div>
+            </div>
+        </div>
+
+    </fieldset>
+</form>

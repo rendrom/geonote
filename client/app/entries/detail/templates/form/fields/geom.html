@@ -1,0 +1,12 @@
+<button ng-hide="entry.geom" ng-click="drawNewEntryMarker()" id="entry-draw-btn" class="btn btn-default btn-xs pull-left" type="button">
+    <span ng-hide="drawNewMarkerMode">Указать местоположение</span>
+    <span ng-show="drawNewMarkerMode">Отменить</span>
+</button>
+<div ng-show="entry.geom">
+    <div>
+        <button ng-click="triggerEntryMarkerEdit()" class="btn btn-default btn-xs pull-left" type="button">
+            <span ng-hide="geomEditMode">Изменить местоположение</span>
+            <span ng-show="geomEditMode">Закончить редакирование</span>
+        </button>
+    </div>
+</div>

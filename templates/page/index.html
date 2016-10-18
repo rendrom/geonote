@@ -1,0 +1,119 @@
+{% extends "_layouts/base.html" %}
+{% load staticfiles %}
+{% load compress %}
+{% load json_filters %}
+
+
+{% block body_attributes %}
+    ng-app="app"
+    ng-controller="AppController"
+{% endblock %}
+
+{% block header %}
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-swipe-right="showSidebar()" ng-swipe-left="hideSidebar()">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div>
+                <a href="" ng-cloak class="navbar-brand" ng-show="Entries.model" ng-click="goToMainPage()">
+                    <i class="fa fa-reply"></i>
+                </a>
+                <a href="" class="navbar-brand" ng-click="backToList()">
+                    <span ng-hide="NAMES.title">{{ SERVER_NAMES.title }}</span>
+                    <span ng-cloak ng-show="NAMES.title" class="animate animate-item">{$ NAMES.title | truncate : 16 $}
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="navbar-collapse collapse">
+
+            <div login-toolbar></div>
+
+            <ul class="nav navbar-nav">
+                <li><a href="" data-toggle="collapse" data-target=".navbar-collapse.in"
+                       ng-click="toggleSidebar()">
+                    &nbsp;&nbsp;Список</a>
+                </li>
+                <li tool-bar></li>
+                <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in"
+                       onclick="$('#aboutModal').modal('show'); return false;">
+                    &nbsp;&nbsp;Справка</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div id="map-container">
+        <div data-leaflet="map"></div>
+        <div id="sidebar">
+            <div ng-view></div>
+        </div>
+    </div>
+    {% include "_layouts/modal/modals.html" %}
+{% endblock %}
+
+
+{% block cdn_css %}{% endblock cdn_css %}
+
+
+{% block css %}
+    {{  block.super }}
+    <link rel="stylesheet" href="{% static 'angular-ui-notification/dist/angular-ui-notification.min.css' %}">
+    <link rel="stylesheet" href="{% static 'angular-carousel/dist/angular-carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'leaflet.locatecontrol/dist/L.Control.Locate.css' %}">
+    <link rel="stylesheet" href="{% static 'leaflet.markercluster/dist/MarkerCluster.css' %}">
+    <link rel="stylesheet" href="{% static 'leaflet.markercluster/dist/MarkerCluster.Default.css' %}">
+    <link rel="stylesheet" href="{% static 'leaflet-draw/dist/leaflet.draw.css' %}">
+    <link rel="stylesheet" href="{% static 'leaflet-sidebar/src/L.Control.Sidebar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/geonote.css' %}">
+{% endblock css %}
+
+{% block css_nocompress %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'leaflet/dist/leaflet.css' %}">
+{% endblock %}
+
+
+{% block cdn_js %}
+    {{ block.super }}
+{% endblock cdn_js %}
+
+{% block js %}
+    {{ block.super }}
+    <script src="{% static 'angular-bootstrap/ui-bootstrap-tpls.min.js' %}"></script>
+    <script src="{% static 'angular-ui-notification/dist/angular-ui-notification.min.js' %}"></script>
+    <script>
+        L_PREFER_CANVAS = true;
+    </script>
+    <script src="{% static 'leaflet/dist/leaflet.js' %}"></script>
+    <script src="{% static 'leaflet.markercluster/dist/leaflet.markercluster.js' %}"></script>
+    <script src="{% static 'leaflet.locatecontrol/src/L.Control.Locate.js' %}"></script>
+    <script src="{% static 'leaflet-draw/dist/leaflet.draw-src.js' %}"></script>
+    <script src="{% static 'leaflet-sidebar/src/L.Control.Sidebar.js' %}"></script>
+    <script src="{% static 'leaflet-groupedlayercontrol/src/leaflet.groupedlayercontrol.js' %}"></script>
+    <script src="{% static 'leaflet-active-area/src/leaflet.activearea.js' %}"></script>
+    <script src="{% static 'html2canvas/dist/html2canvas.min.js' %}"></script>
+{% endblock js %}
+
+{% block app_js %}
+    {{ block.super }}
+    <script src="{% static 'js/geonote.js' %}"></script>
+{#    TODO: notification from server #}
+{#    {% if messages %}#}
+{#        {% for message in messages %}#}
+{#            <script>#}
+{#                ('{{ message }}');#}
+{#            </script>#}
+{#        {% endfor %}#}
+{#    {% endif %}#}
+    <script>
+{#        var names = {{ SERVER_NAMES|jsonify }};#}
+        angular.module('app').constant('SERVER_NAMES', {{ SERVER_NAMES|jsonify }});
+        angular.module('app').constant('NAMES', {{ SERVER_NAMES|jsonify }});
+    </script>
+{% endblock %}

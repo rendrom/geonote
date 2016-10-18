@@ -1,0 +1,43 @@
+{% load staticfiles %}
+<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Проект "{$ NAMES.site $}"</h4>
+            </div>
+            <div class="modal-body">
+                <ul class="nav nav-pills" id="aboutTabs">
+                    <li class="active"><a data-target="#help" data-toggle="tab"><i class="fa fa-life-saver"></i>&nbsp;Помощь</a></li>
+                    <li><a data-target="#about" data-toggle="tab"><i class="fa fa-question-circle"></i>&nbsp;О проекте</a></li>
+{#                    <li ng-show="auth.is_superuser"><a data-target="#developers-tools" data-toggle="tab"><i class="fa fa-wrench"></i>&nbsp;Инструменты разработчика</a></li>#}
+{#                    <li><a data-target="#developers" data-toggle="tab"><i class="fa fa-smile-o"></i>&nbsp;Разработчики</a></li>#}
+                </ul>
+                <div class="tab-content" id="aboutTabsContent" style="padding-top: 10px;">
+                    <div class="tab-pane fade" id="about">
+                        <p>Разработан: rendrom@gmail.com</p>
+                        <p>Версия: dev</p>
+                    </div>
+                    <div id="help" class="tab-pane fade active in">
+                        <p>Добро пожаловать в пилотную версию сайта "{$ NAMES.site $}".</p>
+
+                    </div>
+                    <div class="tab-pane fade" id="developers">
+                        <p>Информация о разработчиках.</p>
+                    </div>
+                    <div class="tab-pane fade" id="developers-tools">
+                        <div class="list-group">
+                            <a href="{% url "delete_all_entry" %}" class="list-group-item">
+                                <h4 class="list-group-item-heading">Удалить все загруженные данные</h4>
+                                <p class="list-group-item-text">Функция для тестирования приложения. Позволяет
+                                    очистить содержимое таблиц entry и upload. Доступна только в режиме отладки (DEBUG=True)</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div><!-- /.modal -->

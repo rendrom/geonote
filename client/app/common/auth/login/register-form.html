@@ -1,0 +1,51 @@
+<div class="modal-content">
+    <div>
+        <div class="modal-header">
+            <button type="button" class="close" aria-hidden="true" ng-click="cancel()">&times;</button>
+            <h4 class="modal-title">Регистрация</h4>
+        </div>
+        <form name="registerForm">
+            <div class="modal-body">
+                <fieldset>
+                    <div class="form-group" ng-class="{'has-error': registerForm.username.$invalid }">
+                        <label for="username">Имя пользователя:</label>
+                        <input ng-model="auth_user.username" name="username" required type="text" autofocus
+                               ng-minlength="4"
+                               ng-maxlength="50"
+                               server-error
+                               class="form-control">
+                    </div>
+                    <div class="form-group" ng-class="{'has-error': registerForm.email.$invalid }">
+                        <label for="password">Почта:</label>
+                        <input ng-model="auth_user.email" name="email" required type="email" server-error
+                               class="form-control">
+                    </div>
+                    <div class="form-group" ng-class="{'has-error': registerForm.password.$invalid }">
+                        <label for="password">Пароль:</label>
+                        <input ng-model="auth_user.password" name="password" required type="password"
+                               ng-minlength="4"
+                               ng-maxlength="50"
+                               server-error
+                               class="form-control">
+                    </div>
+                    <div class="form-group" ng-class="{'has-error': registerForm.password2.$invalid }">
+                        <label for="password">Подтверждение пароля:</label>
+                        <input ng-model="auth_user.password2" name="password2" required type="password"
+                               ng-minlength="4"
+                               ng-maxlength="50"
+                               server-error
+                               class="form-control">
+                    </div>
+                </fieldset>
+            </div>
+            <div class="modal-footer">
+                <button type="button" ng-click="cancel()" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                <button type="submit" ng-click="register()" class="btn btn-primary" ng-disabled="registerForm.$invalid">
+                    Зарегистрироваться
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+

@@ -1,0 +1,16 @@
+<div ng-class="{'has-error': entryFieldForm[field].$invalid }">
+    <div>
+        <ng-form name="entryFieldForm" class="entry-form">
+            <div class="row">
+                <div class="col-xs-6">
+                    Hours step is:
+                    <select class="form-control" ng-model="hstep" ng-options="opt for opt in options.hstep"></select>
+                </div>
+                <div class="col-xs-6">
+                    Minutes step is:
+                    <select class="form-control" ng-model="mstep" ng-options="opt for opt in options.mstep"></select>
+                </div>
+            </div>
+        </ng-form>
+    </div>
+</div>

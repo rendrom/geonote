@@ -1,0 +1,35 @@
+<td class="feature-name">
+    <div class="row">
+        <div class="col-xs-9">
+            <a class="inherit-color" href="" ng-click="goToDetail(e.id)">{$ ::e.entryListName $}</a>
+        </div>
+        <div  class="col-xs-3 ico-in-list ico-part">
+            <div class="ico-dropdown list-ico dropdown" ng-show="e.user == auth.user || auth.is_superuser">
+               <div class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="fa fa-gears action-ico"
+                     onclick="angular.element('.dropdown-toggle').dropdown();"></i></div>
+              <ul class="dropdown-menu pull-right" role="menu">
+                  <li role="presentation">
+                      <a class="inherit-color" role="menuitem" tabindex="-1" href="" ng-click="goToDetail(e.id)">
+                          <i class="fa fa-info-circle action-ico"></i>&nbsp;&nbsp;Информация</a>
+                  </li>
+                  <li role="presentation">
+                      <a class="inherit-color" role="menuitem" tabindex="-1" href="" ng-click="startEdit(e.id)">
+                          <i class="fa fa-pencil action-ico" ></i>&nbsp;&nbsp;Редактировать</a>
+                  </li>
+                  <li role="presentation">
+                    <a class="inherit-color" role="menuitem" tabindex="-1" href="" ng-click="deleteEntry(e.id, e.entryid)">
+                     <i class="fa fa-trash-o action-ico"></i>&nbsp;&nbsp;Удалить</a>
+                  </li>
+              </ul>
+            </div>
+            <div ng-hide="e.user == auth.user || auth.is_superuser" class="list-ico">
+                <i class="fa fa-info-circle action-ico" title="Информация" ng-click="goToDetail(e.id)"></i>
+            </div>
+            <div class="list-ico">
+               <i ng-show="e.geom" ng-click="showOnTheMap(e.id)"
+                  class="fa fa-map-marker action-ico" data-placement="left" title="Показать на карте"></i>
+            </div>
+        </div>
+    </div>
+</td>

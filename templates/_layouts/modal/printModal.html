@@ -1,0 +1,31 @@
+<div class="modal" id="printModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog print-modal-dialog">
+        <div class="modal-content print-modal-content">
+            <div class="modal-header">
+                <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">
+                    Экспортировать {$ NAMES.entry.name $}
+                </h4>
+            </div>
+            <div id="export-frame" class="modal-body">
+                <h3>
+                    {$ NAMES.entry.short_name $}: {$ entryForExport.entryid $}
+                </h3>
+                <div id="printmap-container">
+                    <div id="printmap"></div>
+                </div>
+                <div>
+                    <table class='table table-bordered table-condensed' style="background-color: white">
+                        <tr print-table data-entry="entryForExport"></tr>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Отмена</button>
+                <div id="saveimg">
+                    </div>
+{#                <button type="button" class="btn btn-default pull-right" ng-click="saveImage()">Сохранить изображение</button>#}
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

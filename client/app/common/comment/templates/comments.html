@@ -1,0 +1,25 @@
+<div ng-show="comments.comments.length && enable" class="comment-modal">
+    <a ng-if="comments.comments.length>1" class="show-more more-comments" ng-click="showAllComments()">
+        <div ng-show="comments.commentsLimit == comments.beginCommentsLimit" >
+            <span class="more-link" tabindex="0">
+                <span class="link-text">Показать&nbsp;комментарии&nbsp;({$ comments.comments.length $})&nbsp;</span>
+            </span>
+            <div class="more-arrow">
+                <i class="fa fa-angle-down more-arrow-img"></i>
+            </div>
+        </div>
+        <div ng-hide="comments.commentsLimit == comments.beginCommentsLimit">
+            <span class="more-link" tabindex="0">
+                <span ng-hide="comments.commentsLimit == comments.beginCommentsLimit" class="link-text">Скрыть комментарии&nbsp;</span>
+            </span>
+            <div class="more-arrow">
+                <i class="fa fa-angle-up more-arrow-img"></i>
+            </div>
+        </div>
+    </a>
+    <ul class="comment-list" id="entry-comment-list">
+        <li ng-repeat="comment in comments.comments | limitTo:comments.commentsLimit" class="animate animate-item">
+            <div data-comment-item data-comment="comment" data-comment-lenght="commentLenght"></div>
+        </li>
+    </ul>
+</div>

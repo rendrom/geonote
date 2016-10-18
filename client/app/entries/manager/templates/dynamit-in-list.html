@@ -1,0 +1,30 @@
+<td class="feature-name">
+    <div class="row">
+        <div class="col-xs-9">
+            <a class="inherit-color" href="" ng-click="goToEntry(d)">{$ d.name $}</a><br>
+            <div ng-show="d.description"><small>{$ d.description | limitTo: 120 $}</small></div>
+            <span><small>{$ ::d.user $}</small></span>
+            <span ng-show="d.photo_gallery">&nbsp;<i class="fa fa-picture-o"></i></span>
+            <span ng-show="d.can_comment">&nbsp;<i class="fa fa-comment-o"></i></span>
+            <span ng-show="d.is_public">&nbsp;<i class="fa fa-eye"></i></span>
+            <span ng-hide="d.is_public">&nbsp;<i class="fa fa-eye-slash"></i></span>
+        </div>
+        <div  class="col-xs-3">
+            <div class="ico-dropdown ico-in-list ico-part list-ico dropdown" ng-show="d.user == auth.user || auth.is_superuser">
+               <div class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="fa fa-gears action-ico"
+                     onclick="angular.element('.dropdown-toggle').dropdown();"></i></div>
+              <ul class="dropdown-menu pull-right" role="menu">
+                  <li role="presentation">
+                      <a class="inherit-color" role="menuitem" tabindex="-1" href="" ng-click="startEdit(d)">
+                          <i class="fa fa-pencil action-ico" ></i>&nbsp;&nbsp;Редактировать</a>
+                  </li>
+                  <li role="presentation">
+                    <a class="inherit-color" role="menuitem" tabindex="-1" href="" ng-click="deleteDynamit(d)">
+                     <i class="fa fa-trash-o action-ico"></i>&nbsp;&nbsp;Удалить</a>
+                  </li>
+              </ul>
+            </div>
+        </div>
+    </div>
+</td>

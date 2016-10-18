@@ -1,0 +1,19 @@
+<div class="feature-list">
+    <table class="table table-hover">
+        <tbody>
+            <tr ng-if="!!auth.user">
+                <td class="create-entry-cell" title="Создать слой"
+                    ng-click="goToCreatePage()"
+                    ng-file-drop
+                    ng-file-change="upload($files)"
+                    drag-over-class="dragover"
+                    accept=".geojson,.kml,.gpx">
+                    <span><i class="glyphicon glyphicon-plus create-ico"></i></span>
+                </td>
+            </tr>
+            <tr ng-repeat="d in Dynamit.dynamits" class="animate" id="entry-{$d.id$}">
+                <td dynamit-in-list data-entry="d"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

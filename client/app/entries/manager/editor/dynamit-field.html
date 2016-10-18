@@ -1,0 +1,22 @@
+<tr class="tr-block">
+    <td class="drag-block" ng-show="candrag"><i class="fa fa-sort"></i></td>
+    <td>
+        <input name="verbose_name" ng-model="f.verbose_name" type="text" placeholder=""
+               class="form-control input-block-level" required="" server-error ng-change="slugify(f)"
+               ng-maxlength="meta['verbose_name'].max_length">
+    </td>
+    <td>
+        <input name="name" ng-model="f.name" type="text" placeholder=""
+               class="form-control input-block-level" required="" ng-change="selfslugify(f)"
+               ng-maxlength="meta['name'].max_length">
+    </td>
+    <td>
+        <select name="field_type" ng-model="f.field_type" class="form-control input-block-level" required>
+            <option ng-repeat="c in meta['field_type']['choices']" value="{$c.value$}"
+                    ng-selected="f.field_type === c.value">{$c.display_name$}</option>
+        </select>
+    </td>
+
+    <td class="trash-block"><a href="" ng-click="removeField(f)">
+        <i class="fa fa-trash-o "></i></a></td>
+</tr>

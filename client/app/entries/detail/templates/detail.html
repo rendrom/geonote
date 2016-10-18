@@ -1,0 +1,104 @@
+<div ng-if="!!entry" class="panel panel-default" id="feature">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            <div class="row">
+                <div ng-class="{'col-xs-6 col-lg-7':!emap.sidebar_is_narrow, 'col-xs-8 col-lg-10':emap.sidebar_is_narrow}">
+                        <span ng-show=" NAMES.entry.short_name">{$ NAMES.entry.short_name $}:</span>
+                        <span ng-show="entry.entryid" class="animate entryid-animate">{$ entry.entryid | truncate $}</span>
+                </div>
+                <div ng-hide="emap.sidebar_is_narrow" class="col-xs-3 col-lg-3" ng-init="previous=null; next=null;">
+                    <span ng-show="previous"><a href="" ng-click="goToDetail(previous)" title="Предыдущий платёжный терминал">
+                        <i class="fa fa-angle-double-left"></i></a>
+                    </span>
+                    <span ng-show="brothers" ><small>{$ num_in_cluster $}/{$ brothers.length $}</small></span>
+                    <span ng-show="next"><a href="" ng-click="goToDetail(next)" title="Следующий платёжный терминал">
+                        <i class="fa fa-angle-double-right"></i></a>
+                    </span>
+                </div>
+                <div  class="col-xs-2 col-lg-1">
+                    <div class="dropdown ico-dropdown" ng-show="entry.user == auth.user || auth.is_superuser" style="display:inline-block;">
+                      <a href="" class="dropdown-toggle">
+                          <i class="fa fa-gears action-ico" data-toggle="dropdown"
+                             onclick="$('.dropdown-toggle').dropdown();"></i></a>
+                      <ul class="dropdown-menu pull-right" role="menu">
+                          <li role="presentation" ng-show="entry.geom">
+                              <a role="menuitem" tabindex="-1" href="" ng-click="showOnTheMap(entry.id)">
+                                  <i class="fa fa-map-marker"></i>&nbsp;&nbsp;Показать на карте</a>
+                          </li>
+                          <li role="presentation" ng-hide="editmode || createmode">
+                              <a role="menuitem" tabindex="-1" href="" ng-click="uploadEntry(entry.id)">
+                                  <i class="fa fa-upload" ></i>&nbsp;&nbsp;Экспортировать</a>
+                          </li>
+                          <li role="presentation">
+                              <a role="menuitem" tabindex="-1" href="" ng-click="toggleEdit(entry.id)">
+                                  <i class="fa fa-pencil"></i>&nbsp;&nbsp;
+                                  <span ng-hide="editmode">Редактировать</span>
+                                  <span ng-show="editmode">Отключить редактирование</span>
+                              </a>
+                          </li>
+                          <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="" ng-click="deleteEntry(entry.id)">
+                             <i class="fa fa-trash-o"></i>&nbsp;&nbsp;Удалить</a>
+                          </li>
+                      </ul>
+                    </div>
+                    <div ng-hide="entry.user == auth.user || auth.is_superuser" style="display:inline-block;">
+                        <a href="" ng-click="showOnTheMap(entry.id)"><i ng-show="entry.geom" class="fa fa-map-marker action-ico"
+                                   data-toggle="tooltip" data-placement="left" title="Показать на карте"></i></a>
+                    </div>
+                </div>
+                <div ng-class="{'col-xs-1 col-lg-1':!emap.sidebar_is_narrow, 'col-xs-2 col-lg-1':emap.sidebar_is_narrow}">
+                    <a href="" ng-click="backToList()" title="Закрыть панель">
+                    <i class="fa fa-chevron-left action-ico pull-right"></i></a>
+                </div>
+            </div>
+        </h3>
+    </div>
+    <div  class="sidebar-body sidebar-body-detail">
+        <div ng-show="emap.sidebar_is_narrow && brothers" class="panel-body row top-of-list" ng-init="previous=null; next=null;">
+            <div  class="col-xs-4"><button class="btn btn-default btn-xs" ng-click="goToDetail(previous)" ng-show="previous" title="Предыдущий платёжный терминал">
+                <i class="fa fa-angle-double-left"></i></button>
+            </div>
+            <div class="col-xs-4 text-center changer-center">{$ num_in_cluster $}/{$ brothers.length $}</div>
+            <div class="col-xs-4"><button class="btn btn-default btn-xs pull-right" ng-click="goToDetail(next)" ng-show="next" title="Следующий платёжный терминал">
+                <i class="fa fa-angle-double-right"></i></button>
+            </div>
+        </div>
+        <div class="panel-body" id="feature-info">
+
+            <div entry-attr data-entry="entry" data-editmode="editmode"></div>
+
+            <div ng-if="Entries.dynamit.photo_gallery"
+                 gallery-list data-entry="entry"
+                 data-canedit = "auth.user === entry.user"
+                 data-enable="!editmode"
+                 data-dimensions="400x200"></div>
+
+            <div ng-if="Entries.dynamit.can_comment" comment-list data-entry="entry" data-enable="!editmode"></div>
+        </div>
+    </div>
+    <div ng-cloak class="panel-footer">
+        <div class="input-group" ng-hide="editmode || !Entries.dynamit.can_comment">
+            <input ng-hide="auth.user" type="text" class="form-control comment-input" readonly placeholder="Войдите, чтобы оставить комментарий">
+            <input ng-model="comment" ng-show="auth.user" type="text" class="form-control comment-input" placeholder="Оставить комментарий...">
+                <span class="input-group-btn">
+                <button ng-click="createComment(comment, entry.id)" class="btn btn-default" type="button">Отправить</button>
+                </span>
+        </div><!-- /input-group -->
+
+        <div ng-show="editmode || createmode">
+            <button ng-click="cancelEditing()" class="btn btn-default pull-left" type="button">Отменить</button>
+            <button ng-click="createOrUpdate()" ng-disabled="entryForm.$invalid" class="btn btn-primary pull-right"  type="button">
+                <span ng-show="editmode && !createmode">Обновить</span>
+                <span ng-show="createmode">Добавить</span>
+            </button>
+        </div>
+    </div>
+    <div id="id_geom"></div>
+</div>
+
+<div ng-if="!entry">
+    <div class="loading-details">
+        Загрузка...
+    </div>
+</div>

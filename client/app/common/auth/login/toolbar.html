@@ -1,0 +1,19 @@
+<ul ng-cloak class="nav navbar-nav navbar-right container-fluid">
+    <li ng-show="auth.user">
+        <a href=""
+           class="animate menu-item" ng-click="logout()">
+            <i class="fa fa-power-off"></i>&nbsp;&nbsp;{$ auth.user $}
+        </a>
+    </li>
+    <li ng-hide="auth.user">
+        <a href=""
+           class="animate menu-item" ng-click="register()">Регистрация
+        </a>
+    </li>
+    <li ng-hide="auth.user">
+        <a href=""
+           class="animate menu-item" ng-click="login()">
+            <i class="fa fa-user"></i>&nbsp;&nbsp;Вход
+        </a>
+    </li>
+</ul>

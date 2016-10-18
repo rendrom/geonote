@@ -1,0 +1,29 @@
+<div ng-if="meta.actions['fields']">
+    <div ng-show='false' ng-click="candrag = !candrag">
+        <span ng-show="candrag"><i class="fa fa-toggle-on"></i>&nbsp;Выключить сортировку полей</span>
+        <span ng-hide="candrag"><i class="fa fa-toggle-off"></i>&nbsp;Включить сортировку полей</span>
+    </div>
+    <form name="fieldsForm" ng-if="dynamit.fields.length">
+        <table class="input-block-level">
+            <thead>
+                <tr>
+                    <th ng-show="candrag"></th>
+                    <th>{$ meta.actions['fields']['verbose_name'].label $}</th>
+                    <th>{$ meta.actions['fields']['name'].label $}</th>
+                    <th>{$ meta.actions['fields']['field_type'].label $}</th>
+                </tr>
+            </thead>
+            <tbody ui-sortable="sortableOptions" ng-model="dynamit.fields" class="list">
+                <tr ng-repeat="field in dynamit.fields"
+                    dynamit-field
+                    data-field="field"
+                    data-candrag="candrag"
+                    data-meta="meta.actions['fields']"
+                    data-action="removeDynamitField(field)"></tr>
+            </tbody>
+        </table>
+    </form>
+    <div class="add-field-block" ng-click="addEmptyField()">
+        Добавить поле
+    </div>
+</div>

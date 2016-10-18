@@ -1,0 +1,26 @@
+<div class="gallery-widget"
+     ng-file-drop
+     ng-file-change="upload($files)"
+     drag-over-class="dragover"
+     ng-multiple="true"
+     accept=".jpg, .png, .tiff">
+
+    <div ng-show="images && images.length">
+        <ul rn-carousel >
+            <li ng-repeat="image in images">
+                <div ng-style="{'background-image': 'url(' + image.thumb + ')'}" class="bgimage">
+                    <a  ng-if="canedit" href="" ng-click="deleteImage(image.id)">
+                        <i class="fa fa-trash-o delete-image-btn"></i></a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="app-photos"
+         ng-file-select
+         ng-file-change="upload($files)"
+         ng-multiple="true"
+         accept=".jpg, .png, .tiff"
+         ng-if="canedit">
+        Добавить фотографии
+    </div>
+</div>

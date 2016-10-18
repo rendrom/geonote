@@ -1,0 +1,55 @@
+<div id="dynamit-editor">
+    <div class="modal-header">
+        <button type="button" class="close" aria-hidden="true" ng-click="cancel()">&times;</button>
+        <h4 class="modal-title">
+            <span ng-hide="oldDynamit">Добавление нового слоя</span>
+            <span ng-show="oldDynamit">Редактироване слоя "{$oldDynamit.name$}"</span>
+        </h4>
+    </div>
+    <div class="modal-body">
+        <form name="dynamitForm" id="dynamit-form">
+            <tabset>
+                <tab>
+                    <tab-heading>
+                        Основные параметры&nbsp;<i ng-if="dynamitForm.baseForm.$invalid"
+                                                   class="fa fa-exclamation-triangle"></i>
+                    </tab-heading>
+                    <div dynamit-base-form></div>
+                </tab>
+                <tab>
+                    <tab-heading>
+                        Колонки&nbsp;<i ng-if="dynamitForm.fieldsForm.$invalid" class="fa fa-exclamation-triangle"></i>
+                    </tab-heading>
+                    <div dynamit-fields></div>
+                </tab>
+                <tab>
+                    <tab-heading>
+                        Настройка записей&nbsp;<i ng-if="dynamitForm.optionsForm.$invalid" class="fa fa-exclamation-triangle"></i>
+                    </tab-heading>
+                    <div dynamit-options=""></div>
+                </tab>
+            </tabset>
+        </form>
+    </div>
+
+    <div class="modal-footer">
+        <div class="pull-left">
+            <div ng-click="dynamit.is_public = !dynamit.is_public">
+                <i class="fa fa-eye fa-2x is-public" ng-show="dynamit.is_public" title="Публичный слой"></i>
+                <i class="fa fa-eye-slash fa-2x is-public" ng-hide="dynamit.is_public" title="Закрытый слой"></i>
+            </div>
+        </div>
+
+        <button type="button" ng-click="cancel()" class="btn btn-default" data-dismiss="modal">Отмена</button>
+
+        <button ng-hide="oldDynamit" type="submit" ng-click="create()" ng-disabled="dynamitForm.$invalid"
+                class="btn btn-primary">
+            Создать слой
+        </button>
+        <button ng-show="oldDynamit" type="submit" ng-click="update()" ng-disabled="dynamitForm.$invalid"
+                class="btn btn-primary">
+            Обновить слой
+        </button>
+    </div>
+</div>
+

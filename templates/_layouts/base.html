@@ -1,0 +1,100 @@
+{% load i18n %}
+{% load compress %}
+{% load staticfiles %}
+
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="{% block meta_description %}{% endblock %}">
+    <meta name="author" content="{% block meta_author %}{% endblock %}">
+    <meta name="viewport" content="width=device-width">
+
+    <title>{% block page_title %}{{ SERVER_NAMES.title }}{% endblock %}</title>
+
+    <link rel="shortcut icon" sizes="32x32" href="{% static 'favicon.ico' %}">
+
+    {% block meta %}{% endblock %}
+
+    {% block cdn_css %}{% endblock cdn_css %}
+
+    {% block css_nocompress %}{% endblock %}
+
+    {% compress css %}
+        {% block css %}
+            <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+            <link rel="stylesheet" href="{% static 'animate.css/animate.min.css' %}">
+            <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.css' %}">
+        {% endblock %}
+    {% endcompress %}
+
+    {% block cdn_js %}
+    {% endblock %}
+
+    {% compress js %}
+        {% block js_header %}
+{#        <script src="{% static 'modernizr/src/Modernizr.js' %}"></script>#}
+        <script src="{% static 'admin/js/urlify.js' %}"></script>
+        <script src="{% static 'jquery/dist/jquery.js' %}"></script>
+        <script src="{% static 'jquery-ui-dist/jquery-ui.min.js' %}"></script>
+        <script src="{% static 'angular/angular.min.js' %}"></script>
+        <script src="{% static 'ng-file-upload/dist/angular-file-upload-shim.js' %}"></script>
+        <script src="{% static 'ng-file-upload/dist/angular-file-upload.js' %}"></script>
+        <script src="{% static 'angular-animate/angular-animate.min.js' %}"></script>
+        <script src="{% static 'angular-route/angular-route.min.js' %}"></script>
+        <script src="{% static 'angular-resource/angular-resource.min.js' %}"></script>
+        <script src="{% static 'angular-cookies/angular-cookies.min.js' %}"></script>
+        <script src="{% static 'angular-touch/angular-touch.min.js' %}"></script>
+        <script src="{% static 'angular-carousel/dist/angular-carousel.min.js' %}"></script>
+        <script src="{% static 'angular-ui-sortable/dist/sortable.js' %}"></script>
+        {% endblock %}
+    {% endcompress %}
+
+</head>
+<body class="{% block body_class %}{% endblock %}" {% block body_attributes %}{% endblock %}>
+
+{% block body %}
+
+    {% block header %}{% endblock %}
+
+    {% block content %}{% endblock %}
+
+    {% compress js %}
+        {% block js %}
+            <script src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
+        {% endblock js %}
+    {% endcompress %}
+
+    {% compress js %}
+    {% block app_js %}
+        <script>
+            var DEBUG = {{ JSDEBUG }};
+            var tileServerDNS = '{{ TILE_SERVER_DNS }}';
+        </script>
+        <script src="{% static 'js/plugins.js' %}"></script>
+        <script src="{% static 'js/map.js' %}"></script>
+        <script src="{% static 'js/main.js' %}"></script>
+
+    {% endblock %}
+    {% endcompress %}
+
+{% endblock %}
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-77439353-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

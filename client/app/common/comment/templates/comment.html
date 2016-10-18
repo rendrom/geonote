@@ -1,0 +1,30 @@
+<div class="comment-block">
+    <div ng-hide="comment.editModeOn">
+        <p>{$ c.comment |limitTo: c.textLength $}
+            <a ng-if="c.comment.length>=comments.commentLenght" ng-click="changeCommentLength(c)" class="show-more">
+                {$ c.readMoreText $}
+            </a>
+        </p>
+        <span class="date sub-text">{$ c.submit_date | date:'yyyy-MM-dd HH:mm'$}&nbsp;|</span>
+        <span class="user sub-text">&nbsp;{$ c.user $}&nbsp;</span>
+        <span ng-if="auth.user == c.user || auth.is_superuser">|&nbsp;
+          <a href="" ng-click="deleteComment(c.id)"><i class="fa fa-trash-o delete-comment-btn"></i></a>&nbsp;&nbsp;
+        </span>
+        <span ng-if="auth.user == c.user || auth.is_superuser">|&nbsp;
+          <a href="" ng-click="editComment(comment)"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
+        </span>
+    </div>
+    <div ng-show="comment.editModeOn" class="form-group">
+        <div>
+            <form name="entryForm" class="form-horizontal" role="form">
+                <div>
+                    <textarea class="form-control" ng-model="c.comment" id="description" rows="2" name="comment" style="resize:vertical;"></textarea>
+                </div>
+            </form>
+        </div>
+        <div style="margin-top: 5px">
+            <button class="btn btn-default pull-right" ng-click="updateComment(c)">Изменить комментирий</button>
+            <button class="btn btn-default" ng-click="cancelCommentEditing(comment)">Отмена</button>
+        </div>
+    </div>
+</div>

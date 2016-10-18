@@ -1,0 +1,29 @@
+<div class="modal-content">
+    <div>
+        <div class="modal-header">
+            <button type="button" class="close" aria-hidden="true" ng-click="cancel()">&times;</button>
+            <h4 class="modal-title">Войти</h4>
+        </div>
+        <form id="id_auth_form">
+            <div class="modal-body">
+                <fieldset>
+                    <div class="form-group">
+                        <label for="username">Имя пользователя:</label>
+                            <input ng-model="auth_user.username" name="username" required type="text" class="form-control" autofocus>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Пароль:</label>
+                            <input ng-model="auth_user.password" name="password" required type="password" class="form-control">
+                    </div>
+                </fieldset>
+            </div>
+            <div class="modal-footer">
+                <button type="button" ng-click="cancel()" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                <button type="submit" ng-click="login()" class="btn btn-primary">Войти</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+

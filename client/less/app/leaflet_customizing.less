@@ -1,0 +1,44 @@
+.leaflet-control-layers {
+    border-radius: 0;
+    label {
+        font-weight: normal;
+        margin-bottom: 0px;
+    }
+}
+.leaflet-bar {
+    border-radius: 0;
+    a {
+        &:first-child {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+        &:last-child {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+    }
+}
+.leaflet-sidebar {
+    padding: 0px;
+    z-index: 1020;
+    & > .leaflet-control {
+        padding: 0px;
+        border-radius: 0px;
+    }
+    .close {
+        display: none;
+    }
+}
+.leaflet-control-layers-list input[type="radio"], input[type="checkbox"] {
+    margin: 2px;
+}
+.mycluster {
+    background: url("../img/cluster_stroke.svg") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    font-size: 8px;
+    text-align: center;
+    line-height: 28px;
+}
+.mycluster-shadow {
+    left: 5px;
+    z-index: 1;
+}

@@ -1,0 +1,32 @@
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <form name="entryForm" id="entryform">
+        <div class="panel panel-default" ng-repeat="panel in panels">
+            <div class="panel-heading" role="tab" id="{$panel.id$}" ng-init="panel.collapsed = is_collapsed(panel)">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" ng-click="collapseToggle(panel)">
+                        <span>{$panel.title$}</span>
+                    <span><i class="fa pull-right"
+                             ng-class="{'fa-chevron-down':panel.collapsed, 'fa-chevron-up':!panel.collapsed}"></i>
+                    </span>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse{$panel.id$}" class="panel-collapse collapse" ng-class="{'in': !panel.collapsed}"
+                 role="tabpanel" aria-labelledby="headingOne">
+                <div>
+                    <table class='table table-condensed'>
+                        <tr ng-repeat="field in panel.fields" ng-form="entryFieldForm-{$ field $}"
+                            ng-show="((entryMeta[field] || panel['custom_edit_template'][field]) && (createmode || editmode)) ||
+                            (entry[field] && !editmode && !(panel.edit_only && panel.edit_only.indexOf(field)>-1))">
+                            <th class="attr-row-title">{$ entryMeta[field]['label'] $}</th>
+                            <td ng-if="!editmode">{$ entry[field] $}</td>
+                            <td ng-if="editmode">
+                                <div input-control></div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

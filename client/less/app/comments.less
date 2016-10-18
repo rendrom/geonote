@@ -1,0 +1,68 @@
+a:hover, a:active, a:focus {
+    outline: 0;
+}
+.comment-modal {
+    display: block;
+    position: relative;
+    clear: both;
+    .modal-dialog {
+        min-height: 350px;
+        height: 80%;
+    }
+    .comment-list {
+        list-style: none;
+        padding: 0;
+        .comment-block {
+            .form-control {
+                border: 1px;
+                border-radius: 0;
+            }
+        }
+        li {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        img {
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            margin-right: 10px;
+            margin-top: 20px;
+        }
+        p {
+            margin: 0;
+        }
+        span {
+            font-size: .8em;
+            color: #aaa;
+        }
+    }
+}
+.comment-modal .modal-content, .comment-modal .modal-body, .comment-modal .row {
+    height: 100%;
+}
+.modal-content {
+    border-radius: 0;
+}
+.show-more {
+    -webkit-user-select: none;
+    color: #999;
+    display: inline-block;
+    font-size: 12px;
+    margin-top: 2px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.more-comments {
+    color: #262626;
+    outline: 0;
+}
+.more-arrow {
+    display: inline-block;
+    margin-top: 0;
+    vertical-align: top;
+}
+
+.delete-comment-btn {
+  color: @trash-color;
+}

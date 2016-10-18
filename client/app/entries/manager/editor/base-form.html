@@ -1,0 +1,44 @@
+<form name="baseForm">
+    <fieldset>
+        <div class="row">
+            <!-- Name -->
+            <div class="form-group col-xs-6" ng-class="{'has-error': dynamitForm.baseForm.name.$invalid }">
+                <label class="control-label" for="name">{$ meta.actions['name'].label $}</label>
+
+                <div class="controls">
+                    <input id="name" name="name" ng-model="dynamit.name" type="text" placeholder=""
+                           class="form-control" required="" server-error
+                           ng-maxlength="meta.actions['name'].max_length" ng-change="slugify(dynamit)">
+
+                    <p ng-if="meta.actions['name'].help_text"
+                       class="help-block">{$ meta.actions['name'].help_text $}</p>
+                </div>
+            </div>
+            <!-- Slug -->
+            <div class="form-group col-xs-6" ng-class="{'has-error': dynamitForm.baseForm.slug.$invalid }">
+                <label class="control-label" for="slug">{$ meta.actions['slug'].label $}</label>
+
+                <div class="controls">
+                    <input id="slug" name="slug" ng-model="dynamit.slug" type="text" placeholder=""
+                           class="form-control" required="" server-error ng-change="selfslugify(dynamit)"
+                           ng-maxlength="meta.actions['slug'].max_length">
+
+                    <p ng-if="meta.actions['slug'].help_text"
+                       class="help-block">{$ meta.actions['slug'].help_text $}</p>
+                </div>
+            </div>
+        </div>
+        <!-- Descriptions -->
+        <div class="form-group">
+            <label class="control-label" for="description">{$ meta.actions['description'].label $}</label>
+
+            <div class="controls">
+                <textarea id="description" ng-model="dynamit.description" name="description"
+                          class="form-control" rows="2"></textarea>
+
+                <p ng-if="meta.actions['description'].help_text"
+                   class="help-block">{$ meta.actions['description'].help_text $}</p>
+            </div>
+        </div>
+    </fieldset>
+</form>

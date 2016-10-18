@@ -1,0 +1,18 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Artemiy Doroshkov -- developers -- rendrom@gmail.com
+
+# THANKS
+
+    <name>
+
+# TECHNOLOGY COLOPHON
+
+    Python, Django, Django-Rest-Framework
+    JS, AngularJS 1.x, Leaflet.js
+    HTML5, CSS3
+    GIS
+

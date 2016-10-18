@@ -1,0 +1,20 @@
+<div class="panel panel-default" id="features">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            <div class="row">
+                <div ng-class="{'col-xs-6': !is_narrow, 'col-xs-7': is_narrow}">
+                    <span>Список слоёв</span>
+                </div>
+                <div ng-class="{'col-xs-4': !is_narrow, 'col-xs-3': is_narrow}" ng-cloak>
+                </div>
+                <div class="col-xs-2"><a href="" ng-click="hideSidebar()"><i class="fa fa-times action-ico pull-right"></i></a>
+                </div>
+            </div>
+        </h3>
+    </div>
+    <div class="sidebar-body">
+            <div dynamit-list></div>
+    </div>
+</div>
+
+

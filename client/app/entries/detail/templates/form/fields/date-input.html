@@ -1,0 +1,15 @@
+<div ng-class="{'has-error': entryFieldForm[field].$invalid }">
+    <div>
+        <ng-form name="entryFieldForm" class="entry-form">
+            <div class="input-group">
+                <input type="text" class="form-control" datepicker-popup="{$ format $}" ng-model="entry[field]"
+                       is-open="opened" datepicker-options="dateOptions" server-error ng-change="formatDate()"
+                       ng-required="required" close-text="Close"/>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i
+                        class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </div>
+        </ng-form>
+    </div>
+</div>

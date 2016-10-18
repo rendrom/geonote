@@ -1,0 +1,8 @@
+<div ng-class="{'has-error': entryFieldForm[field].$invalid }">
+    <div>
+        <ng-form name="entryFieldForm" class="entry-form">
+            <input class="attr-input" name="{$field$}" ng-model="entry[field]"
+                   type="{$ type $}"/>
+        </ng-form>
+    </div>
+</div>
