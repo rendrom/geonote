@@ -3,8 +3,10 @@ GEONOTE v1.5.0 (alpha)
 
 Web-based application for storage geodata
 
-[DEMO](http://geonote.ru)
+[Live demo](http://geonote.ru)
 
+[Youtube #1](https://www.youtube.com/watch?v=SoMN1hQXKnw), 
+[Youtube #2](https://www.youtube.com/watch?v=WPfIXxpSHeU)
 
 ## Server-side 
 
