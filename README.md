@@ -1,6 +1,8 @@
 GEONOTE v1.5.0 (alpha)
 ======================
 
+__THIS PROJECT IS DEPRECATED AND NO LONGER SUPPORTED__
+
 Web-based application for storage geodata
 
 [Live demo](http://geonote.ru)
