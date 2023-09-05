@@ -17,6 +17,8 @@ Requirements:
 - Django => 1.10.0
 - PostgresSQL/PostGIS
 
+Includes https://github.com/rendrom/django-dynamit
+
 Installation:
     
     $ git clone https://github.com/rendrom/geonote.git
